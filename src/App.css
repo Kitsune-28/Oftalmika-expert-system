@@ -1,0 +1,274 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f4f8;
+  margin: 0;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+
+.fixed-logo-img {
+  width: 200px;
+  height: auto;
+  object-fit: contain;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.fixed-logo-img:focus {
+  outline: 3px solid #ff6805;
+  outline-offset: 4px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* 🔹 ЕДИНЫЙ СТИЛЬ ДЛЯ КНОПОК В ШАПКЕ */
+.btn-doctor-nav,
+.accessibility-toggle {
+  background-color: #ffffff;
+  border: 2px solid #e0e0e0;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  min-height: 42px;
+  white-space: nowrap;
+}
+
+.btn-doctor-nav:hover,
+.accessibility-toggle:hover {
+  background-color: #ff6805;
+  border-color: #ff6805;
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(255, 104, 5, 0.25);
+}
+
+.btn-doctor-nav:focus,
+.accessibility-toggle:focus {
+  outline: 3px solid #333;
+  outline-offset: 2px;
+  background-color: #fff8f0;
+}
+
+.accessibility-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  filter: brightness(0.7);
+  transition: filter 0.2s;
+}
+
+.btn-doctor-nav:hover .accessibility-icon,
+.accessibility-toggle:hover .accessibility-icon {
+  filter: brightness(0) invert(1);
+}
+
+.container {
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+  margin: 120px auto 40px;
+  box-sizing: border-box;
+}
+
+.progress-bar {
+  height: 10px;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  border: 1px solid #ccc;
+}
+.progress-fill {
+  height: 100%;
+  background-color: #ff6805;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.question-card, .result-card {
+  background: #ffffff;
+  padding: 35px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+  text-align: center;
+  border: 1px solid #eee;
+}
+
+h2 { color: #222; margin-bottom: 25px; font-size: 1.5rem; line-height: 1.3; }
+h3 { color: #555; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+
+.options-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-bottom: 25px; }
+.option-btn {
+  padding: 16px; border: 2px solid #d0d0d0; background: #fafafa; border-radius: 8px;
+  cursor: pointer; font-size: 1.05rem; transition: all 0.2s; color: #333; text-align: left;
+}
+.option-btn:hover { border-color: #ff6805; background-color: #fff8f0; }
+.option-btn.selected { border-color: #ff6805; background-color: #ff6805; color: white; font-weight: 600; }
+.option-btn:focus { outline: 3px solid #ff6805; outline-offset: 2px; z-index: 1; box-shadow: 0 0 0 3px rgba(255, 104, 5, 0.2); }
+
+.controls { display: flex; justify-content: space-between; align-items: center; margin-top: 15px; }
+
+.btn-primary {
+  background-color: #ff6805; color: white; border: none; padding: 14px 32px;
+  border-radius: 6px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: background 0.2s;
+}
+.btn-primary:disabled { background-color: #ccc; cursor: not-allowed; }
+.btn-primary:hover:not(:disabled) { background-color: #e65d00; }
+.btn-primary:focus { outline: 3px solid #333; outline-offset: 2px; }
+
+.btn-text { background: none; border: none; color: #555; cursor: pointer; font-size: 1rem; text-decoration: underline; padding: 14px; }
+.btn-text:focus { outline: 2px solid #ff6805; outline-offset: 2px; }
+
+.btn-secondary {
+  background-color: #f0f0f0; color: #111; border: 2px solid #333; padding: 14px 28px;
+  border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 0.95rem; transition: all 0.2s;
+}
+.btn-secondary:focus { outline: 3px solid #333; outline-offset: 2px; }
+.btn-secondary:hover { background-color: #e0e0e0; }
+
+.status-badge { display: inline-block; padding: 10px 20px; border-radius: 20px; font-weight: 600; margin-bottom: 20px; font-size: 1.1rem; border: 2px solid currentColor; }
+.status-high { background-color: #ffebee; color: #c62828; }
+.status-medium { background-color: #fff3e0; color: #ef6c00; }
+.status-low { background-color: #e8f5e9; color: #2e7d32; }
+
+.diagnosis-text { font-size: 1.15rem; line-height: 1.5; color: #111; margin-bottom: 25px; text-align: left; }
+.loading-screen { display: flex; justify-content: center; align-items: center; height: 100vh; font-size: 1.3rem; color: #333; }
+
+.registration-form { display: flex; flex-direction: column; gap: 18px; margin-bottom: 25px; text-align: left; }
+.reg-input { padding: 14px; border: 2px solid #d0d0d0; border-radius: 8px; font-size: 1rem; width: 100%; box-sizing: border-box; transition: border 0.2s; }
+.reg-input:focus { outline: none; border-color: #ff6805; box-shadow: 0 0 0 3px rgba(255, 104, 5, 0.1); }
+
+.gender-group { display: flex; gap: 20px; flex-wrap: wrap; }
+.gender-group label { display: flex; align-items: center; gap: 8px; font-size: 1rem; cursor: pointer; }
+.gender-group input[type="radio"] { width: 18px; height: 18px; accent-color: #ff6805; }
+
+.consent-group { margin-top: 10px; margin-bottom: 15px; }
+.consent-label { display: flex; align-items: flex-start; gap: 10px; font-size: 0.9rem; color: #444; cursor: pointer; line-height: 1.4; }
+.consent-checkbox { width: 18px; height: 18px; margin-top: 2px; accent-color: #ff6805; flex-shrink: 0; }
+.consent-checkbox:focus { outline: 3px solid #ff6805; outline-offset: 2px; }
+.privacy-link { color: #ff6805; text-decoration: underline; font-weight: 500; }
+.privacy-link:hover { color: #e65d00; }
+
+body.accessible-mode { background-color: #ffffff; font-size: 20px; }
+body.accessible-mode .site-header { background-color: #000; border-bottom: 2px solid #fff; padding: 0 20px; }
+body.accessible-mode .fixed-logo-img { filter: grayscale(100%) contrast(150%); }
+body.accessible-mode .fixed-logo-img:focus { outline: 3px solid #ffff00; }
+
+body.accessible-mode .btn-doctor-nav,
+body.accessible-mode .accessibility-toggle {
+  background-color: #000;
+  color: #fff;
+  border: 3px solid #fff;
+  font-size: 1.1rem;
+  padding: 12px 20px;
+}
+body.accessible-mode .btn-doctor-nav:hover,
+body.accessible-mode .accessibility-toggle:hover {
+  background-color: #222;
+  color: #ffff00;
+  border-color: #ffff00;
+}
+body.accessible-mode .btn-doctor-nav:focus,
+body.accessible-mode .accessibility-toggle:focus {
+  outline: 4px solid #ffff00;
+  outline-offset: 4px;
+}
+body.accessible-mode .accessibility-icon { filter: invert(1); }
+
+body.accessible-mode .question-card, body.accessible-mode .result-card { background: #fff; border: 3px solid #000; box-shadow: none; padding: 40px; }
+body.accessible-mode h2 { color: #000; font-size: 1.8rem; font-weight: 700; }
+body.accessible-mode h3 { color: #000; font-size: 1.1rem; font-weight: 700; }
+body.accessible-mode .option-btn { border: 3px solid #000; color: #000; background: #fff; font-size: 1.2rem; }
+body.accessible-mode .option-btn:hover { background-color: #ffff00; border-color: #000; }
+body.accessible-mode .option-btn.selected { background-color: #000; color: #fff; }
+body.accessible-mode .option-btn:focus { outline: 4px solid #ffff00; box-shadow: 0 0 0 6px #000; }
+body.accessible-mode .btn-primary { background-color: #000; color: #fff; border: 3px solid #fff; font-size: 1.2rem; }
+body.accessible-mode .btn-primary:focus, body.accessible-mode .btn-primary:disabled:focus { outline: 4px solid #ffff00; }
+body.accessible-mode .btn-secondary { background-color: #fff; color: #000; border: 3px solid #000; }
+body.accessible-mode .btn-secondary:focus { outline: 4px solid #ffff00; }
+body.accessible-mode .btn-text { color: #000; font-weight: 700; }
+body.accessible-mode .btn-text:focus { outline: 3px solid #ffff00; }
+body.accessible-mode .progress-bar { background-color: #ccc; border: 2px solid #000; }
+body.accessible-mode .progress-fill { background-color: #000; }
+body.accessible-mode .status-badge { border: 3px solid #000; color: #000; background: #fff; font-size: 1.3rem; }
+body.accessible-mode .status-high, body.accessible-mode .status-medium, body.accessible-mode .status-low { color: #000; }
+body.accessible-mode .diagnosis-text { color: #000; font-size: 1.3rem; }
+body.accessible-mode .reg-input { border: 3px solid #000; background: #fff; color: #000; font-size: 1.2rem; }
+body.accessible-mode .reg-input:focus { outline: 4px solid #ffff00; }
+body.accessible-mode .gender-group label { font-size: 1.2rem; }
+body.accessible-mode .gender-group input[type="radio"] { width: 28px; height: 28px; accent-color: #000; }
+body.accessible-mode .consent-label { font-size: 1.1rem; color: #000; }
+body.accessible-mode .consent-checkbox { width: 28px; height: 28px; accent-color: #000; }
+body.accessible-mode .consent-checkbox:focus { outline: 4px solid #ffff00; }
+body.accessible-mode .privacy-link { color: #000; text-decoration: underline; font-weight: 700; }
+
+@media (max-width: 768px) {
+  .site-header { flex-direction: column; height: auto; padding: 15px 20px; gap: 15px; }
+  .header-actions { width: 100%; justify-content: center; }
+  .btn-doctor-nav, .accessibility-toggle { width: 100%; }
+  .container { margin-top: 150px; }
+  body.accessible-mode .container { margin-top: 170px; }
+}
+@media (max-width: 480px) {
+  .fixed-logo-img { width: 160px; }
+  .question-card, .result-card { padding: 25px; }
+  .controls { flex-direction: column; gap: 12px; }
+  .btn-secondary, .btn-primary { width: 100%; margin: 0; }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 15px;
+    margin-top: 100px;
+  }
+
+  .result-card, .question-card {
+    padding: 25px 20px;
+  }
+
+  h2 {
+    font-size: 1.35rem;
+  }
+
+  .btn-primary, .btn-secondary {
+    padding: 16px 20px;
+    font-size: 1.05rem;
+  }
+
+  .resume-modal {
+    padding: 25px 20px !important;
+    margin: 15px;
+  }
+}
+
+@media (max-width: 360px) {
+  .container {
+    margin-top: 90px;
+  }
+}

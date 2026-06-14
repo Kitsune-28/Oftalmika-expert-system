@@ -1,0 +1,390 @@
+.admin-dashboard-container {
+  max-width: 1400px;
+  margin: 24px auto 0;
+  padding: 0 20px;
+}
+
+.table-container {
+  overflow-x: auto;
+  margin-top: 20px;
+}
+
+.admin-table {
+  width: 100%;
+  max-width: 1350px;
+  margin: 0 auto;
+  border-collapse: collapse;
+  background: #ffffff;
+  border-radius: 0 0 12px 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.admin-table th {
+  background: #f8f9fa;
+  padding: 16px 12px;
+  text-align: left;
+  font-weight: 600;
+  color: #333;
+  border-bottom: 2px solid #e0e0e0;
+  vertical-align: middle;
+}
+
+.admin-table th:nth-child(4),  /* Статус */
+.admin-table th:nth-child(5) { /* Действия */
+  text-align: center;
+  padding: 16px 8px;
+}
+
+.admin-table td {
+  padding: 14px 12px;
+  border-bottom: 1px solid #f0f0f0;
+  vertical-align: middle;
+}
+
+.admin-table tr:hover {
+  background-color: #f8faff;
+}
+
+.action-btn {
+  padding: 9px 18px;
+  margin: 0 6px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  white-space: nowrap;
+  min-width: 140px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  font-weight: 500;           /* Убрали жирность */
+}
+
+.btn-view {
+  background-color: #ff6805;
+  color: white;
+}
+
+.btn-view:hover {
+  background-color: #e55a00;
+  transform: translateY(-1px);
+}
+
+.btn-admin-delete {
+  background-color: #dc3545;
+  color: white;
+  font-weight: 500;
+}
+
+.btn-admin-delete:hover {
+  background-color: #c82333;
+  transform: translateY(-1px);
+}
+
+.btn-admin-edit {
+  background-color: #28a745;
+  color: white;
+  font-weight: 500;
+}
+
+.btn-admin-edit:hover {
+  background-color: #218838;
+}
+
+.btn-admin-edit:hover,
+.btn-admin-delete:hover {
+  transform: translateY(-1px);
+}
+
+.status-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.status-high { background: #ffebee; color: #d32f2f; }
+.status-medium { background: #fff3e0; color: #f57c00; }
+.status-low { background: #e8f5e9; color: #388e3c; }
+
+.text-center { text-align: center; }
+.actions-cell { white-space: nowrap; }
+
+.admin-add-btn-container {
+  background: #f8f9fa;
+  max-width: 1350px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: right;
+  box-sizing: border-box;
+}
+
+.admin-tabs {
+  display: flex;
+  gap: 10px;
+  max-width: 1350px;
+  margin: 0 auto 0;
+  background: #f8f9fa;
+  padding: 16px 16px 0;
+  border-radius: 12px 12px 0 0;
+  box-sizing: border-box;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.admin-tab-btn {
+  padding: 16px 32px;
+  font-size: 1.1rem;
+  border: none;
+  background: #f1f1f1;
+  border-radius: 8px 8px 0 0;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.admin-tab-btn.active {
+  background: #ff6805;
+  color: white;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 25px 30px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 720px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+}
+
+.admin-add-btn-container .btn-admin-edit {
+  padding: 14px 28px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  min-width: 240px;
+  background-color: #28a745;
+  color: white;
+  transition: all 0.2s ease;
+  box-shadow: 0 3px 10px rgba(40, 167, 69, 0.3);
+}
+
+.admin-add-btn-container .btn-admin-edit:hover {
+  background-color: #218838;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
+}
+
+.admin-input {
+  width: 100%;
+  padding: 16px 14px;
+  margin-bottom: 18px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  transition: all 0.2s;
+  box-sizing: border-box;
+}
+
+.admin-input:focus {
+  border-color: #ff6805;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 104, 5, 0.15);
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+checkbox-label input[type="checkbox"] {
+  width: 22px;
+  height: 22px;
+  accent-color: #28a745;
+}
+
+.modal-footer {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 25px;
+}
+
+.btn-admin-edit,
+.btn-admin-cancel {
+  padding: 14px 32px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  min-width: 160px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-admin-edit {
+  background-color: #28a745;
+  color: white;
+  border: none;
+}
+
+.btn-admin-edit:hover {
+  background-color: #218838;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
+}
+
+.btn-admin-cancel {
+  background-color: #6c757d;
+  color: white;
+  border: none;
+}
+
+.btn-admin-cancel:hover {
+  background-color: #5a6268;
+  transform: translateY(-2px);
+}
+
+.modal-content {
+  padding: 30px 35px;
+}
+
+.modal-content h2 {
+  margin-bottom: 25px;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.action-btn {
+  padding: 9px 18px;
+  margin: 0 6px;           /* немного уменьшил отступ между кнопками */
+  border: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  white-space: nowrap;
+  min-width: 140px;        /* Увеличил и сделал одинаковым */
+  text-align: center;
+  transition: all 0.2s;
+  height: 42px;            /* Фиксированная высота */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-admin-edit {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn-admin-edit:hover {
+  background-color: #218838;
+  transform: translateY(-1px);
+}
+
+.btn-admin-delete {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-admin-delete:hover {
+  background-color: #c82333;
+  transform: translateY(-1px);
+}
+
+/* Убираем зазор между поиском и таблицей */
+.search-container {
+  background: #f8f9fa;
+  max-width: 1350px;
+  margin: 0 auto;
+  border-radius: 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.table-container {
+  overflow-x: auto;
+  margin-top: 0 !important;
+}
+
+/* Чтобы верх таблицы красиво соединялся */
+.admin-table {
+  border-top: none;
+  margin-top: 0;
+}
+
+/* Контейнеры для поиска (без зазоров) */
+.search-container {
+  background: #f8f9fa;
+  max-width: 1350px;
+  margin: 0 auto;
+  border-radius: 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.table-container {
+  overflow-x: auto;
+  margin-top: 0 !important;
+}
+
+.admin-table {
+  border-top: none;
+  margin-top: 0;
+}
+
+/* Стили для переключения видимости пароля в модальных окнах */
+.password-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 18px;
+  width: 100%;
+}
+
+.password-input-wrapper .admin-input {
+  padding-right: 45px;
+  margin-bottom: 0; /* Отступ теперь управляется обёрткой */
+  width: 100%;
+}
+
+.toggle-password-btn {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  transition: color 0.2s, background-color 0.2s;
+  border-radius: 4px;
+  z-index: 10;
+}
+
+.toggle-password-btn:hover {
+  color: #333;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.toggle-password-btn:focus {
+  outline: 2px solid #ff6805;
+  outline-offset: 2px;
+}

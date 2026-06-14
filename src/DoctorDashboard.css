@@ -1,0 +1,599 @@
+.doctor-dashboard {
+    min-height: 100vh;
+    background-color: #f0f4f8;
+}
+
+.dashboard-container {
+    max-width: 1200px;
+    margin: 120px auto 40px;
+    padding: 20px;
+}
+
+.dashboard-container h1 {
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.error-message {
+    background-color: #ffebee;
+    border: 2px solid #c62828;
+    color: #c62828;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.error-message p {
+    margin: 0 0 15px 0;
+    font-size: 1.1rem;
+}
+
+.btn-retry {
+    background-color: #c62828;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn-retry:hover {
+    background-color: #b71c1c;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.btn-survey-nav {
+    background-color: #2e7d32;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.btn-survey-nav:hover {
+    background-color: #1b5e20;
+}
+
+.btn-survey-nav:focus {
+    outline: 3px solid #ff6805;
+    outline-offset: 2px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    text-align: center;
+    border: 1px solid #eee;
+}
+
+.stat-card h3 {
+    color: #666;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.stat-value {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+}
+
+.stat-high .stat-value { color: #c62828; }
+.stat-medium .stat-value { color: #ef6c00; }
+.stat-low .stat-value { color: #2e7d32; }
+
+.filters-section {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.search-input {
+    flex: 1;
+    min-width: 250px;
+    padding: 15px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.search-input:focus {
+    outline: 3px solid #ff6805;
+    outline-offset: 2px;
+    border-color: #ff6805;
+}
+
+.filter-select {
+    padding: 15px 25px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    background: white;
+    cursor: pointer;
+}
+
+.filter-select:focus {
+    outline: 3px solid #ff6805;
+    outline-offset: 2px;
+}
+
+.sessions-table-container {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    overflow: hidden;
+    border: 1px solid #eee;
+}
+
+.sessions-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.sessions-table th,
+.sessions-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.sessions-table th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+    color: #333;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+}
+
+.sessions-table tr:hover {
+    background-color: #fff8f0;
+}
+
+.sessions-table tr:last-child td {
+    border-bottom: none;
+}
+
+.diagnosis-cell {
+    max-width: 250px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.no-data {
+    text-align: center;
+    color: #666;
+    padding: 40px !important;
+}
+
+.btn-view {
+    background-color: #ff6805;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+
+.btn-view:hover {
+    background-color: #e65d00;
+}
+
+.btn-view:focus {
+    outline: 3px solid #333;
+    outline-offset: 2px;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    padding: 20px;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 12px;
+    padding: 40px;
+    max-width: 700px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #666;
+    line-height: 1;
+    padding: 5px;
+}
+
+.modal-close:hover {
+    color: #333;
+}
+
+.modal-close:focus {
+    outline: 3px solid #ff6805;
+    outline-offset: 2px;
+}
+
+.modal-content h2 {
+    margin-bottom: 25px;
+    color: #333;
+    font-size: 1.5rem;
+}
+
+.session-info {
+    background: #f8f9fa;
+    padding: 25px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.info-row:last-child {
+    border-bottom: none;
+}
+
+.info-row strong {
+    color: #666;
+}
+
+.info-row span {
+    color: #333;
+    font-weight: 500;
+}
+
+.answers-section {
+    margin-top: 25px;
+}
+
+.answers-section h3 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.answers-list {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.answer-item {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.answer-item strong {
+    display: block;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.answer-item p {
+    color: #666;
+    margin: 0;
+}
+
+.no-answers {
+    color: #666;
+    text-align: center;
+    padding: 20px;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 25px;
+    padding-top: 25px;
+    border-top: 2px solid #eee;
+}
+
+/* Accessible Mode */
+body.accessible-mode .doctor-dashboard {
+    background-color: #ffffff;
+}
+
+body.accessible-mode .dashboard-container h1 {
+    color: #000;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+body.accessible-mode .error-message {
+    background-color: #fff;
+    border: 3px solid #000;
+    color: #000;
+}
+
+body.accessible-mode .btn-retry {
+    background-color: #000;
+    color: #fff;
+    border: 3px solid #fff;
+}
+
+body.accessible-mode .btn-survey-nav {
+    background-color: #000;
+    color: #fff;
+    border: 3px solid #fff;
+    font-size: 1.2rem;
+    padding: 15px 30px;
+}
+
+body.accessible-mode .btn-survey-nav:focus {
+    outline: 4px solid #ffff00;
+    outline-offset: 4px;
+}
+
+body.accessible-mode .stat-card {
+    background: #fff;
+    border: 3px solid #000;
+    box-shadow: none;
+    padding: 30px;
+}
+
+body.accessible-mode .stat-card h3 {
+    color: #000;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+body.accessible-mode .stat-value {
+    font-size: 3rem;
+    color: #000;
+}
+
+body.accessible-mode .search-input,
+body.accessible-mode .filter-select {
+    border: 3px solid #000;
+    font-size: 1.3rem;
+    padding: 18px;
+}
+
+body.accessible-mode .search-input:focus,
+body.accessible-mode .filter-select:focus {
+    outline: 4px solid #ffff00;
+    outline-offset: 4px;
+}
+
+body.accessible-mode .sessions-table-container {
+    border: 3px solid #000;
+    box-shadow: none;
+}
+
+body.accessible-mode .sessions-table th,
+body.accessible-mode .sessions-table td {
+    padding: 18px;
+    font-size: 1.2rem;
+    border-bottom: 2px solid #000;
+}
+
+body.accessible-mode .sessions-table th {
+    background-color: #000;
+    color: #fff;
+}
+
+body.accessible-mode .sessions-table tr:hover {
+    background-color: #ffff00;
+}
+
+body.accessible-mode .btn-view {
+    background-color: #000;
+    color: #fff;
+    border: 3px solid #fff;
+    font-size: 1.2rem;
+    padding: 12px 25px;
+}
+
+body.accessible-mode .btn-view:focus {
+    outline: 4px solid #ffff00;
+    outline-offset: 4px;
+}
+
+body.accessible-mode .modal-content {
+    border: 3px solid #000;
+    padding: 50px;
+}
+
+body.accessible-mode .modal-close {
+    color: #000;
+    font-size: 2.5rem;
+}
+
+body.accessible-mode .modal-close:focus {
+    outline: 4px solid #ffff00;
+}
+
+body.accessible-mode .session-info {
+    background: #fff;
+    border: 3px solid #000;
+}
+
+body.accessible-mode .info-row {
+    border-bottom: 2px solid #000;
+    font-size: 1.3rem;
+}
+
+body.accessible-mode .info-row strong,
+body.accessible-mode .info-row span {
+    color: #000;
+}
+
+body.accessible-mode .answer-item {
+    background: #fff;
+    border: 3px solid #000;
+    font-size: 1.2rem;
+}
+
+body.accessible-mode .answer-item strong,
+body.accessible-mode .answer-item p {
+    color: #000;
+}
+
+body.accessible-mode .status-badge {
+    border: 3px solid #000;
+    color: #000;
+    background: #fff;
+    font-size: 1.3rem;
+}
+
+@media (max-width: 768px) {
+    .dashboard-container {
+        margin-top: 160px;
+    }
+
+    .header-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn-survey-nav {
+        width: 100%;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .filters-section {
+        flex-direction: column;
+    }
+
+    .search-input {
+        min-width: 100%;
+    }
+
+    .sessions-table-container {
+        overflow-x: auto;
+    }
+
+    .sessions-table {
+        min-width: 800px;
+    }
+
+    .modal-content {
+        padding: 25px;
+    }
+
+    .info-row {
+        flex-direction: column;
+        gap: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stat-value {
+        font-size: 2rem;
+    }
+}
+
+/* Добавить после .btn-survey-nav:focus */
+
+.btn-logout {
+    background-color: #c62828;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.btn-logout:hover {
+    background-color: #b71c1c;
+}
+
+.btn-logout:focus {
+    outline: 3px solid #ff6805;
+    outline-offset: 2px;
+}
+
+/* Доступная версия для кнопки выхода */
+body.accessible-mode .btn-logout {
+    background-color: #000;
+    color: #fff;
+    border: 3px solid #fff;
+    font-size: 1.2rem;
+    padding: 15px 30px;
+}
+
+body.accessible-mode .btn-logout:hover {
+    background-color: #333;
+}
+
+body.accessible-mode .btn-logout:focus {
+    outline: 4px solid #ffff00;
+    outline-offset: 4px;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .header-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .btn-survey-nav,
+    .btn-logout {
+        width: 100%;
+    }
+}

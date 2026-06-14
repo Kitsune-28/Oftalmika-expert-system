@@ -1,0 +1,343 @@
+.doctor-login-page {
+    min-height: 100vh;
+    background-color: #f0f4f8;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 80px);
+    padding: 40px 20px;
+    margin-top: 80px;
+    box-sizing: border-box;
+}
+
+.login-card {
+    background: white;
+    padding: 50px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    width: 100%;
+    max-width: 450px;
+    border: 1px solid #eee;
+}
+
+.login-card h1 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+.login-subtitle {
+    color: #666;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1rem;
+}
+
+.error-message {
+    background-color: #ffebee;
+    border: 2px solid #c62828;
+    color: #c62828;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 1rem;
+}
+
+.login-input {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 1.1rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  margin-top: 6px;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.login-input:focus {
+  outline: none;
+  border-color: #ff6805;
+  box-shadow: 0 0 0 3px rgba(255, 104, 5, 0.15);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #333;
+}
+
+.login-hint {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    border-left: 4px solid #ff6805;
+}
+
+.login-hint p {
+    margin: 5px 0;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+.login-hint code {
+    background-color: #e0e0e0;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-family: monospace;
+    color: #333;
+}
+
+.login-controls {
+    display: flex;
+    gap: 15px;
+    justify-content: space-between;
+}
+
+.btn-back {
+    background-color: #e0e0e0;
+    color: #333;
+    border: none;
+    padding: 15px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.btn-back:hover {
+    background-color: #d0d0d0;
+}
+
+.btn-back:focus {
+    outline: 3px solid #ff6805;
+    outline-offset: 2px;
+}
+
+.btn-login {
+    background-color: #2e7d32;
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.2s;
+    flex: 1;
+}
+
+.btn-login:hover:not(:disabled) {
+    background-color: #1b5e20;
+}
+
+.btn-login:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.btn-login:focus {
+    outline: 3px solid #ff6805;
+    outline-offset: 2px;
+}
+
+/* Accessible Mode */
+body.accessible-mode .doctor-login-page {
+    background-color: #ffffff;
+}
+
+body.accessible-mode .login-card {
+    background: #fff;
+    border: 3px solid #000;
+    box-shadow: none;
+    padding: 60px;
+}
+
+body.accessible-mode .login-card h1 {
+    color: #000;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+body.accessible-mode .login-subtitle {
+    color: #000;
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+body.accessible-mode .error-message {
+    background-color: #fff;
+    border: 3px solid #000;
+    color: #000;
+    font-size: 1.3rem;
+}
+
+body.accessible-mode .form-group label {
+    color: #000;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+body.accessible-mode .login-input {
+    border: 3px solid #000;
+    font-size: 1.3rem;
+    padding: 18px;
+}
+
+body.accessible-mode .login-input:focus {
+    outline: 4px solid #ffff00;
+    outline-offset: 4px;
+}
+
+body.accessible-mode .login-hint {
+    background-color: #fff;
+    border: 3px solid #000;
+    border-left: 6px solid #000;
+}
+
+body.accessible-mode .login-hint p {
+    color: #000;
+    font-size: 1.2rem;
+}
+
+body.accessible-mode .login-hint code {
+    background-color: #000;
+    color: #fff;
+    font-size: 1.2rem;
+}
+
+body.accessible-mode .btn-back {
+    background-color: #fff;
+    color: #000;
+    border: 3px solid #000;
+    font-size: 1.2rem;
+    padding: 18px 30px;
+}
+
+body.accessible-mode .btn-back:focus {
+    outline: 4px solid #ffff00;
+    outline-offset: 4px;
+}
+
+body.accessible-mode .btn-login {
+    background-color: #000;
+    color: #fff;
+    border: 3px solid #fff;
+    font-size: 1.2rem;
+    padding: 18px 40px;
+}
+
+body.accessible-mode .btn-login:hover:not(:disabled) {
+    background-color: #333;
+}
+
+body.accessible-mode .btn-login:focus {
+    outline: 4px solid #ffff00;
+    outline-offset: 4px;
+}
+
+@media (max-width: 768px) {
+    .login-card {
+        padding: 30px;
+    }
+
+    .login-controls {
+        flex-direction: column;
+    }
+
+    .btn-back,
+    .btn-login {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-container {
+        padding: 20px;
+    }
+
+    .login-card {
+        padding: 25px;
+    }
+
+    .login-card h1 {
+        font-size: 1.5rem;
+    }
+}
+
+.password-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-input-wrapper .login-input {
+  padding-right: 45px;
+}
+
+.toggle-password-btn {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  transition: color 0.2s, background-color 0.2s;
+  border-radius: 4px;
+}
+
+.toggle-password-btn:hover {
+  color: #333;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.toggle-password-btn:focus {
+  outline: 2px solid #ff6805;
+  outline-offset: 2px;
+}
+
+body.accessible-mode .password-input-wrapper .login-input {
+  padding-right: 55px;
+}
+
+body.accessible-mode .toggle-password-btn {
+  right: 15px;
+  color: #000;
+  padding: 8px;
+}
+
+body.accessible-mode .toggle-password-btn:hover {
+  background-color: #e0e0e0;
+}
+
+body.accessible-mode .toggle-password-btn:focus {
+  outline: 3px solid #ffff00;
+  outline-offset: 3px;
+}
