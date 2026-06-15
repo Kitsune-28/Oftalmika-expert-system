@@ -260,19 +260,17 @@ body.accessible-mode .btn-login:focus {
 }
 
 @media (max-width: 768px) {
-    .login-card {
-        padding: 30px;
-    }
-
-    .login-controls {
-        flex-direction: column;
-    }
-
-    .btn-back,
-    .btn-login {
-        width: 100%;
-    }
+  .login-controls {
+    flex-direction: column;
+  }
+  .btn-login {
+    order: 1;
+  }
+  .btn-back {
+    order: 2;
+  }
 }
+
 
 @media (max-width: 480px) {
     .login-container {
@@ -340,16 +338,4 @@ body.accessible-mode .toggle-password-btn:hover {
 body.accessible-mode .toggle-password-btn:focus {
   outline: 3px solid #ffff00;
   outline-offset: 3px;
-}
-
-@media (max-width: 768px) {
-  .login-controls {
-    flex-direction: column;
-  }
-  .btn-login {
-    order: 1;
-  }
-  .btn-back {
-    order: 2;
-  }
 }
