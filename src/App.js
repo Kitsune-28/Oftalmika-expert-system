@@ -640,7 +640,7 @@ function PatientSurvey() {
                 </label>
               </div>
             </div>
-            <div className="controls reg-controls">
+            <div className="controls nav-controls">
               <button onClick={handleBack} className="btn-text">Назад</button>
               <button onClick={handleNext} disabled={isRegisterNextDisabled} className="btn-primary">Далее</button>
             </div>
@@ -669,7 +669,7 @@ function PatientSurvey() {
                 ))}
               </div>
 
-              <div className="controls">
+              <div className="controls nav-controls">
                 <button ref={backButtonRef} onClick={handleBack} className="btn-text">Назад</button>
                 <button
                   ref={nextButtonRef}
