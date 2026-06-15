@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './DoctorDashboard.css';
@@ -63,16 +63,20 @@ const SURVEY_TRANSLATIONS = {
   "time_of_day": "В определённое время суток",
 };
 
+const URGENCY_RU = {
+  high: 'Высокая',
+  medium: 'Средняя',
+  low: 'Низкая'
+};
+
 function AdminDashboard() {
   const [sessions, setSessions] = useState([]);
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [activeTab, setActiveTab] = useState('sessions');
-  
   const [searchTerm, setSearchTerm] = useState('');
   const [userSearchTerm, setUserSearchTerm] = useState('');
-  
   const [selectedSession, setSelectedSession] = useState(null);
   const [editModal, setEditModal] = useState({ isOpen: false, data: null });
   const [formData, setFormData] = useState({});
@@ -83,34 +87,22 @@ function AdminDashboard() {
     role: 'doctor',
     is_active: true
   });
-  
   const [showCreatePassword, setShowCreatePassword] = useState(false);
   const [showEditPassword, setShowEditPassword] = useState(false);
   
   const navigate = useNavigate();
-  const token = localStorage.getItem('doctorToken');
-  const config = { headers: { Authorization: `Bearer ${token}` } };
-  
-  const currentLogin = localStorage.getItem('doctorLogin');
 
-  const URGENCY_RU = {
-    high: 'Высокая',
-    medium: 'Средняя',
-    low: 'Низкая'
-  };
-
-  useEffect(() => {
-    if (localStorage.getItem('userRole') !== 'admin') {
-      navigate('/doctor/login');
-      return;
-    }
-    fetchData();
-  }, [navigate]);
-
-  const fetchData = async () => {
+  // 1. Оборачиваем fetchData в useCallback. 
+  // Массив зависимостей пустой [], так как внутри используются только стабильные setState и локальные переменные.
+  const fetchData = useCallback(async () => {
     try {
       setLoading(true);
       setError(null);
+      
+      // Создаем token и config внутри функции, чтобы избежать пересоздания ссылки на объект при каждом рендере
+      const token = localStorage.getItem('doctorToken');
+      const config = { headers: { Authorization: `Bearer ${token}` } };
+
       const [sessRes, usersRes] = await Promise.all([
         axios.get(`${API_URL}/admin/sessions`, config),
         axios.get(`${API_URL}/admin/users`, config)
@@ -123,7 +115,16 @@ function AdminDashboard() {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
+
+  // 2. Добавляем fetchData в массив зависимостей useEffect
+  useEffect(() => {
+    if (localStorage.getItem('userRole') !== 'admin') {
+      navigate('/doctor/login');
+      return;
+    }
+    fetchData();
+  }, [navigate, fetchData]);
 
   const filteredSessions = sessions.filter(s => {
     const searchLower = searchTerm.toLowerCase();
@@ -153,15 +154,19 @@ function AdminDashboard() {
         : normalized);
   };
 
+  // 3. Обновленные функции с локальным созданием config
   const handleDelete = async (type, id, userLogin) => {
+    const currentLogin = localStorage.getItem('doctorLogin');
     if (type === 'users' && userLogin === currentLogin) {
       alert('Вы не можете удалить свою собственную учётную запись!');
       return;
     }
-    
     if (!window.confirm('Вы уверены, что хотите удалить эту запись?')) return;
-    
+
     try {
+      const token = localStorage.getItem('doctorToken');
+      const config = { headers: { Authorization: `Bearer ${token}` } };
+      
       await axios.delete(`${API_URL}/admin/${type}/${id}`, config);
       fetchData();
     } catch (err) {
@@ -177,8 +182,11 @@ function AdminDashboard() {
 
   const handleUpdateUser = async () => {
     try {
+      const token = localStorage.getItem('doctorToken');
+      const config = { headers: { Authorization: `Bearer ${token}` } };
+      
       await axios.put(`${API_URL}/admin/users/${formData.id}`, formData, config);
-      setEditModal({ isOpen: false });
+      setEditModal({ isOpen: false, data: null });
       fetchData();
     } catch (err) {
       alert('Ошибка обновления: ' + (err.response?.data?.detail || err.message));
@@ -187,6 +195,9 @@ function AdminDashboard() {
 
   const handleCreateUser = async () => {
     try {
+      const token = localStorage.getItem('doctorToken');
+      const config = { headers: { Authorization: `Bearer ${token}` } };
+      
       await axios.post(`${API_URL}/admin/users`, newUser, config);
       setShowCreateModal(false);
       setNewUser({ login: '', password: '', role: 'doctor', is_active: true });
@@ -213,19 +224,27 @@ function AdminDashboard() {
           <button onClick={handleLogout} className="btn-logout">Выход</button>
         </div>
       </header>
-      
+
       <div className="admin-dashboard-container">
         <h1 className="admin-title">Панель администратора</h1>
 
-        {error && <div className="error-message"><p>{error}</p></div>}
+        {error && (
+          <div className="error-message">
+            <p>{error}</p>
+          </div>
+        )}
 
         <div className="admin-tabs">
-          <button className={`admin-tab-btn ${activeTab === 'sessions' ? 'active' : ''}`} 
-                  onClick={() => setActiveTab('sessions')}>
+          <button 
+            className={`admin-tab-btn ${activeTab === 'sessions' ? 'active' : ''}`} 
+            onClick={() => setActiveTab('sessions')}
+          >
             Сессии пациентов
           </button>
-          <button className={`admin-tab-btn ${activeTab === 'users' ? 'active' : ''}`} 
-                  onClick={() => setActiveTab('users')}>
+          <button 
+            className={`admin-tab-btn ${activeTab === 'users' ? 'active' : ''}`} 
+            onClick={() => setActiveTab('users')}
+          >
             Пользователи системы
           </button>
         </div>
@@ -329,6 +348,7 @@ function AdminDashboard() {
                     </tr>
                   ) : (
                     filteredUsers.map(u => {
+                      const currentLogin = localStorage.getItem('doctorLogin');
                       const isCurrentUser = u.login === currentLogin;
                       return (
                         <tr key={u.id}>
@@ -375,7 +395,8 @@ function AdminDashboard() {
               <div className="info-row"><strong>Возраст:</strong> <span>{selectedSession.age}</span></div>
               <div className="info-row"><strong>Дата:</strong> <span>{selectedSession.sessiontime}</span></div>
               <div className="info-row"><strong>Диагноз:</strong> <span>{selectedSession.diagnosis}</span></div>
-              <div className="info-row"><strong>Срочность:</strong> 
+              <div className="info-row">
+                <strong>Срочность:</strong> 
                 <span className={`status-badge status-${selectedSession.urgency}`}>{getUrgencyLabel(selectedSession.urgency)}</span>
               </div>
             </div>
@@ -444,13 +465,13 @@ function AdminDashboard() {
                 >
                   {showEditPassword ? (
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
-                      <line x1="1" y1="1" x2="23" y2="23"/>
+                      <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.2 4" />
+                      <line x1="1" y1="1" x2="23" y2="23" />
                     </svg>
                   ) : (
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                      <circle cx="12" cy="12" r="3"/>
+                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                      <circle cx="12" cy="12" r="3" />
                     </svg>
                   )}
                 </button>
@@ -492,13 +513,13 @@ function AdminDashboard() {
                 >
                   {showCreatePassword ? (
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
-                      <line x1="1" y1="1" x2="23" y2="23"/>
+                      <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.2 4" />
+                      <line x1="1" y1="1" x2="23" y2="23" />
                     </svg>
                   ) : (
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                      <circle cx="12" cy="12" r="3"/>
+                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                      <circle cx="12" cy="12" r="3" />
                     </svg>
                   )}
                 </button>
