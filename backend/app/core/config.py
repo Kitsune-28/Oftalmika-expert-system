@@ -12,14 +12,16 @@ MAIN_DB = {
     "host": os.getenv("MAIN_DB_HOST", "localhost"),
     "database": os.getenv("MAIN_DB_NAME", "expertSystemDatabase"),
     "user": os.getenv("MAIN_DB_USER", "postgres"),
-    "password": os.getenv("MAIN_DB_PASS", "272817")
+    "password": os.getenv("MAIN_DB_PASS", "272817"),
+    "port": os.getenv("MAIN_DB_PORT", "5432")
 }
 
 AUTH_DB = {
     "host": os.getenv("AUTH_DB_HOST", "localhost"),
     "database": os.getenv("AUTH_DB_NAME", "expertSystemAuthorization"),
     "user": os.getenv("AUTH_DB_USER", "postgres"),
-    "password": os.getenv("AUTH_DB_PASS", "272817")
+    "password": os.getenv("AUTH_DB_PASS", "272817"),
+    "port": os.getenv("AUTH_DB_PORT", "5432")
 }
 
 LOGIN_PATTERN = re.compile(r'^[a-zA-Z0-9]+$')
