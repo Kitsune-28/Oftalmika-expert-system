@@ -5,7 +5,7 @@ import './DoctorDashboard.css';
 import './AdminDashboard.css';
 import logo from './logo.png';
 
-const API_URL = 'resourceful-recreation-production-5bdd.up.railway.app';
+const API_URL = 'https://resourceful-recreation-production-5bdd.up.railway.app/api';
 
 const SURVEY_TRANSLATIONS = {
   "none": "Нет потери зрения",
