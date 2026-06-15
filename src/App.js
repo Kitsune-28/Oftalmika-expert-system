@@ -10,7 +10,7 @@ import DoctorLogin from './DoctorLogin';
 import DoctorDashboard from './DoctorDashboard';
 import AdminDashboard from './AdminDashboard';
 
-const API_URL = 'http://127.0.0.1:8000/api';
+const API_URL = 'resourceful-recreation-production-5bdd.up.railway.app';
 const STORAGE_KEY = 'patientSurveyProgress_v2';
 
 function PatientSurvey() {
