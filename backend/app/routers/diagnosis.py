@@ -30,7 +30,7 @@ def _row_to_question(row: dict) -> dict:
         "dynamic": False,
     }
 
-@router.get("/api/questions")
+@router.post("/api/questions")
 async def get_questions():
     conn = None
     try:
@@ -131,7 +131,7 @@ async def analyze_answers(payload: Dict[str, Any]):
         raise HTTPException(status_code=500, detail="Ошибка при анализе данных")
 
 
-@router.get("/api/sessions")
+@router.post("/api/sessions")
 async def get_all_sessions(current_user: dict = Depends(get_current_user)):
     conn = None
     try:
@@ -180,7 +180,7 @@ async def get_all_sessions(current_user: dict = Depends(get_current_user)):
         if conn:
             conn.close()
 
-@router.get("/api/sessions/stats")
+@router.post("/api/sessions/stats")
 async def get_sessions_stats(current_user: dict = Depends(get_current_user)):
     conn = None
     try:
