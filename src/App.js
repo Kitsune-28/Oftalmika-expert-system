@@ -592,7 +592,7 @@ function PatientSurvey() {
           </div>
 
         ) : step === 0 ? (
-          <div className="question-card">
+          <div className="question-card reg-card">
             <h2>Регистрация</h2>
             <p>Пожалуйста, введите ваши данные</p>
             <div className="registration-form">
@@ -640,7 +640,7 @@ function PatientSurvey() {
                 </label>
               </div>
             </div>
-            <div className="controls">
+            <div className="controls reg-controls">
               <button onClick={handleBack} className="btn-text">Назад</button>
               <button onClick={handleNext} disabled={isRegisterNextDisabled} className="btn-primary">Далее</button>
             </div>
