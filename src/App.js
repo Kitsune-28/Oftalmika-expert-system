@@ -10,7 +10,7 @@ import DoctorLogin from './DoctorLogin';
 import DoctorDashboard from './DoctorDashboard';
 import AdminDashboard from './AdminDashboard';
 
-const API_URL = 'resourceful-recreation-production-5bdd.up.railway.app';
+const API_URL = 'https://resourceful-recreation-production-5bdd.up.railway.app/api';
 const STORAGE_KEY = 'patientSurveyProgress_v2';
 
 function PatientSurvey() {
