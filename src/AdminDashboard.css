@@ -392,6 +392,7 @@ checkbox-label input[type="checkbox"] {
 @media (max-width: 768px) {
   .admin-dashboard-container {
     padding: 0 12px;
+    padding-top: 150px;
   }
 
   .admin-table {
