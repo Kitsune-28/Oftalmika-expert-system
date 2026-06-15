@@ -388,3 +388,41 @@ checkbox-label input[type="checkbox"] {
   outline: 2px solid #ff6805;
   outline-offset: 2px;
 }
+
+@media (max-width: 768px) {
+  .admin-dashboard-container {
+    padding: 0 12px;
+  }
+
+  / Таблица держит ширину, а контейнер её горизонтально прокручивает /
+  .admin-table {
+    min-width: 640px;
+  }
+  .table-container {
+    -webkit-overflow-scrolling: touch; / плавный скролл на iOS /
+  }
+
+  / Компактнее ячейки на телефоне /
+  .admin-table th,
+  .admin-table td {
+    padding: 10px 8px;
+    font-size: 0.85rem;
+  }
+
+  / Вкладки не обрезаются: переносятся/скроллятся, кнопки компактнее /
+  .admin-tabs {
+    flex-wrap: wrap;
+    padding: 12px 12px 0;
+    gap: 6px;
+  }
+  .admin-tab-btn {
+    padding: 12px 18px;
+    font-size: 0.95rem;
+  }
+  
+  .action-btn {
+    min-width: auto;
+    padding: 7px 12px;
+    font-size: 0.85rem;
+  }
+}
