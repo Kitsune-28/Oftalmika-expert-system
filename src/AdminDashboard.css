@@ -394,22 +394,19 @@ checkbox-label input[type="checkbox"] {
     padding: 0 12px;
   }
 
-  / Таблица держит ширину, а контейнер её горизонтально прокручивает /
   .admin-table {
     min-width: 640px;
   }
   .table-container {
-    -webkit-overflow-scrolling: touch; / плавный скролл на iOS /
+    -webkit-overflow-scrolling: touch;
   }
 
-  / Компактнее ячейки на телефоне /
   .admin-table th,
   .admin-table td {
     padding: 10px 8px;
     font-size: 0.85rem;
   }
 
-  / Вкладки не обрезаются: переносятся/скроллятся, кнопки компактнее /
   .admin-tabs {
     flex-wrap: wrap;
     padding: 12px 12px 0;
