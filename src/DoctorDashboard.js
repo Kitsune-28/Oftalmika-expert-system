@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import './DoctorDashboard.css';
 import logo from './logo.png';
 
-const API_URL = 'resourceful-recreation-production-5bdd.up.railway.app';
+const API_URL = 'https://resourceful-recreation-production-5bdd.up.railway.app/api';
 
 const SURVEY_TRANSLATIONS = {
   "none": "Нет потери зрения",
