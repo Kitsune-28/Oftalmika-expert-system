@@ -409,6 +409,7 @@ checkbox-label input[type="checkbox"] {
 
   .admin-tabs {
     flex-wrap: nowrap;
+    overflow-x: auto;
     padding: 12px 12px 0;
     gap: 6px;
   }
