@@ -234,12 +234,15 @@ body.accessible-mode .privacy-link { color: #000; text-decoration: underline; fo
   .btn-doctor-nav, .accessibility-toggle { width: 100%; }
   .container { margin-top: 150px; }
   body.accessible-mode .container { margin-top: 170px; }
+  .reg-card { margin-top: 24px; }
 }
 @media (max-width: 480px) {
   .fixed-logo-img { width: 160px; }
   .question-card, .result-card { padding: 25px; }
   .controls { flex-direction: column; gap: 12px; }
   .btn-secondary, .btn-primary { width: 100%; margin: 0; }
+  .reg-controls .btn-primary { order: 1; }
+  .reg-controls .btn-text { order: 2; }
 }
 
 @media (max-width: 480px) {
