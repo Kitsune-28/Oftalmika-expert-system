@@ -341,3 +341,15 @@ body.accessible-mode .toggle-password-btn:focus {
   outline: 3px solid #ffff00;
   outline-offset: 3px;
 }
+
+@media (max-width: 768px) {
+  .login-controls {
+    flex-direction: column;
+  }
+  .btn-login {
+    order: 1;
+  }
+  .btn-back {
+    order: 2;
+  }
+}
